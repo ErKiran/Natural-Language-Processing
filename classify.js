@@ -1,7 +1,13 @@
 var natural = require('natural');
 var classifier = new natural.BayesClassifier();
+const data = require('./sms-spam-collection-dataset/cleaneddata.json');
 
-var trainingData = [
+const trainingData = data.splice(0, 5000);
+const testData = data.splice(500, 555);
+
+console.log(data.length)
+
+/*var trainingData = [
     { text: 'RE: Canadian drugs now on sale', label: 'spam' },
     { text: 'Earn more from home', label: 'spam' },
     { text: 'Information now available!!!', label: 'spam' },
@@ -10,14 +16,14 @@ var trainingData = [
     { text: 'Project planning - next steps', label: 'notspam' },
     { text: 'Birthday party next weekend', label: 'notspam' },
     { text: 'Drinks on Monday?', label: 'notspam' }
-];
+];*/
 
-var testData = [
+/*var testData = [
     { text: 'Drugs for cheap', label: 'spam' },
     { text: 'Next deadline due Monday', label: 'notspam' },
     { text: 'Meet me at home?', label: 'notspam' },
     { text: 'Hang out with someone near you', label: 'spam' }
-];
+];*/
 
 trainingData.forEach(function (item) {
     classifier.addDocument(item.text, item.label);

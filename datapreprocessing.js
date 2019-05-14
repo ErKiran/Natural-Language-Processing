@@ -1,5 +1,5 @@
 const fs = require('fs');
-const data = require('./db.json');
+const data = require('./sms-spam-collection-dataset/db.json');
 
 //Remove the Empty Fields arise using CSV convertor
 const obj = data.map(({ FIELD3, FIELD4, FIELD5, ...rest }) => rest);
@@ -12,7 +12,7 @@ json2 = JSON.parse(JSON.stringify(json1).split('"v2":').join('"text":'));
 //Rename ham to not spam for simplicity
 json2.forEach(a => {
     if (a.label == 'ham') {
-        a.label = 'not spam'
+        a.label = 'notspam'
     }
 });
 
